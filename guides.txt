@@ -9,6 +9,7 @@ command CLI
 
 1.update repo server >> local dengan branch
 " git pull origin <branch_name> "
+or
 > git fetch origin <branch_name> 
 > git checkout <branch_name> 
 2.update repo local >>> server dengan branch & commit
