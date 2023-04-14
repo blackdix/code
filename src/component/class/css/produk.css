@@ -1,0 +1,15 @@
+.box-stock{
+    width:300px;
+    display:inline-block;
+    height: auto;
+    border:2px solid gray;
+    padding:10px;
+    margin:10px;
+   
+}
+.box-stock img {
+    width:200px;
+    height: 200px;
+  
+  
+}
