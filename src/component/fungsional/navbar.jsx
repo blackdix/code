@@ -43,6 +43,9 @@ import {
                   <NavLink href="/profile">Profile</NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink href="/mahasiswa">Mahasiswa</NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink href="/about">About us</NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
