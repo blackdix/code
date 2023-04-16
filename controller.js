@@ -28,7 +28,7 @@ exports.tampildataid=function(req,res){
      response.ok(err,res)
    }
    else{
-     response.ok(rows,res)
+     response.ok("Tampil data Berhasil !",res)
  }
  })
  
@@ -48,7 +48,7 @@ if (err){
      console.log(err)
    }
    else{
-     response.ok(rows,res)
+     response.ok("Penambahan Berhasil !",res)
      console.log("Penambahan Berhasil !")
  }
   })
@@ -77,7 +77,7 @@ exports.del=function(req,res){
     console.log(err)
   }
   else{
-    response.ok(rows,res)
+    response.ok(" Berhasil menghapus data!",res)
   }
 
   })
