@@ -1,41 +1,67 @@
 import React, { PureComponent } from 'react';
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Container, Col, Row, Form, FormGroup, Alert, Label, Input, Button } from 'reactstrap';
-//import {useLocation} from 'react-router-dom';/*di gunakan untuk memperoleh parssing data dari route */
+//import { useLocation } from 'react-router-dom';/*di gunakan untuk memperoleh parssing data dari route */
+import qs from 'querystring'
 
 
 
+const api = "http://localhost:3001"
 
-const api ="http://localhost:3001"
 class editmahasiswa extends PureComponent {
-constructor(props) {
-    super(props);
- //const Location = useLocation();
-     this.state ={
-       //      id_mahasiswa:this.state.location.state.id,
-      //       nim:this.state.location.state.nim,
-       //      nama:this.state.location.state.nama,
-        //     kelamin:this.state.location.state.kelamin,
-        //     kelas:this.state.location.state.kelas,
-        //     alamat:this.state.location.sate.alamat,
-             response:'',
-             display:'none'
+    constructor(props) {
+        super(props);
+       console.log(props );
+      const reciever=this.props.location.state;
+        this.state = {
+            id: 1,
+            nim: "reciever.nim",
+            nama: "reciever.nama",
+            kelamin: "reciever.kelamin",
+            kelas: "reciever.kelas",
+            alamat: Location.state.alamat, 
+            response: '',
+            display: 'none'
 
-     }
-}
-  /* menangkap perubahan data di input bisa di handle dimasukan ke state */
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
-}
+        }
+    }
+    /* menangkap perubahan data di input bisa di handle dimasukan ke state */
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    updatedata = (id) => {
+        const data = qs.stringify({
+            id: 'id',
+            nim: 'this.state.nim',
+            nama_lengkap: 'this.state.nama',
+            kelamin:'this.state.kelamin',
+            kelas: 'this.state.kelas',
+            alamat: 'this.state.alamat',
 
+        });
+        axios.put(api + '/mahasiswa/edit', data)
+            .then(json => {
+                if (json === 200) {
+                    this.setState({
+                        response: json.data.values,
+                        display: 'block'
+                    })
+                } else {
+                    this.setState({
+                        response: json.data.values,
+                        display: 'block'
+                    })
+                }
+            })
+    }
     render() {
         return (
             <div>
                 <Container>
                     <h4>Tambah Data</h4>
-                    
-                    <Alert color="primary" style={{display:this.state.display}}>
+
+                    <Alert color="primary" style={{ display: this.state.display }}>
                         {this.state.response}
                     </Alert>
                     <Form className="form">
@@ -54,7 +80,7 @@ constructor(props) {
 
                                 <Row>
                                     <Col>
-                                        <Input type="text" name="nama" value={this.state.nama} onChange={this.handleChange}  placeholder='Masukan Nama' />
+                                        <Input type="text" name="nama" value={this.state.nama} onChange={this.handleChange} placeholder='Masukan Nama' />
                                     </Col>
                                 </Row>
                             </FormGroup>
@@ -81,7 +107,7 @@ constructor(props) {
 
                                 <Row>
                                     <Col>
-                                        <Input type="textarea" name="alamat" value={this.state.alamat} onChange={this.handleChange}  placeholder='Masukan Alamat' />
+                                        <Input type="textarea" name="alamat" value={this.state.alamat} onChange={this.handleChange} placeholder='Masukan Alamat' />
                                     </Col>
                                 </Row>
 
@@ -91,7 +117,7 @@ constructor(props) {
 
                                 <Row>
                                     <Col>
-                                        <Button type="button" onClick={this.adddata}>Simpan</Button>
+                                        <Button type="button" onClick={this.updatedata}>Simpan</Button>
                                     </Col>
                                 </Row>
                             </FormGroup>
