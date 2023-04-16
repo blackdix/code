@@ -15,7 +15,7 @@ or
 2.update repo local >>> server dengan branch & commit
 " git add ."
 " git commit -m "note log perubahan"
-" git push -u origin <branch_name> "
+" git push -u origin <branch_name> " or "git push origin HEAD:<branch_name>
 3. download single branch 
 " git clone --branch <branch_name> --single-branch https://github.com/username/Repo.git"
 " git clone --branch dev https://github.com/username/Repo.git "
