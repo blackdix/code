@@ -1,0 +1,15 @@
+log use command github.com 
+
+1.update repo server >> local dengan branch
+" git pull origin <branch_name> "
+2.update repo local >>> server dengan branch & commit
+" git add ."
+" git commit -m "note log perubahan"
+" git push -u origin <branch_name> "
+3. download single branch 
+" git clone --branch <branch_name> --single-branch https://github.com/username/Repo.git"
+" git clone --branch dev https://github.com/username/Repo.git "
+4. hapus file Git repository and the filesystem
+" git rm <filenam.txt>" other command only Git repository and no the filesystem remove"git rm --cached <filenam.txt>"
+" git commit -m "remove log note"
+5. 
